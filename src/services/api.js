@@ -12,7 +12,17 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    // Add any auth tokens here if needed
+    // Add auth tokens from localStorage
+    const githubToken = localStorage.getItem('githubToken');
+    const geminiKey = localStorage.getItem('geminiKey');
+    
+    if (githubToken) {
+      config.headers['X-GitHub-Token'] = githubToken;
+    }
+    if (geminiKey) {
+      config.headers['X-Gemini-Key'] = geminiKey;
+    }
+    
     return config;
   },
   (error) => {

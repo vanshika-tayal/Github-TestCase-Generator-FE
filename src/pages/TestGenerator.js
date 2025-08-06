@@ -92,11 +92,32 @@ const TestGenerator = () => {
     }
   });
 
-  // Load files from navigation state
+  // Load files from navigation state and fetch their content
   useEffect(() => {
-    if (location.state?.selectedFiles) {
-      setSelectedFiles(location.state.selectedFiles);
-    }
+    const fetchFileContents = async () => {
+      if (location.state?.selectedFiles) {
+        const filesWithContent = await Promise.all(
+          location.state.selectedFiles.map(async (file) => {
+            try {
+              const response = await githubAPI.getFileContent(file.owner, file.repo, file.path);
+              return {
+                ...file,
+                content: response.file.content
+              };
+            } catch (error) {
+              console.error(`Failed to fetch content for ${file.name}:`, error);
+              return {
+                ...file,
+                content: '// Failed to fetch file content'
+              };
+            }
+          })
+        );
+        setSelectedFiles(filesWithContent);
+      }
+    };
+    
+    fetchFileContents();
   }, [location.state]);
 
   const handleGenerateSummaries = async () => {
@@ -114,7 +135,7 @@ const TestGenerator = () => {
     const filesData = selectedFiles.map(file => ({
       name: file.name,
       path: file.path,
-      content: file.content || '',
+      content: file.content || '// No content available',
       language: detectLanguage(file.name)
     }));
 

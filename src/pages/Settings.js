@@ -26,10 +26,10 @@ import { cn } from '../utils/helpers';
 
 const Settings = () => {
   const [settings, setSettings] = useState({
-    githubToken: '',
-    geminiKey: '',
-    autoSave: true,
-    notifications: true,
+    githubToken: localStorage.getItem('githubToken') || '',
+    geminiKey: localStorage.getItem('geminiKey') || '',
+    autoSave: localStorage.getItem('autoSave') !== 'false',
+    notifications: localStorage.getItem('notifications') !== 'false',
   });
 
   const { isDarkMode, toggleTheme } = useTheme();
@@ -39,8 +39,19 @@ const Settings = () => {
   });
 
   const handleSave = () => {
-    // In a real app, you'd save to backend/localStorage
-    toast.success('Settings saved successfully!');
+    // Save to localStorage
+    localStorage.setItem('githubToken', settings.githubToken);
+    localStorage.setItem('geminiKey', settings.geminiKey);
+    localStorage.setItem('autoSave', settings.autoSave.toString());
+    localStorage.setItem('notifications', settings.notifications.toString());
+    
+    // If tokens are provided, update the backend configuration
+    if (settings.githubToken || settings.geminiKey) {
+      // The tokens will be used from localStorage in API calls
+      toast.success('Settings saved successfully! API keys are now configured.');
+    } else {
+      toast.success('Settings saved successfully!');
+    }
   };
 
   const containerVariants = {

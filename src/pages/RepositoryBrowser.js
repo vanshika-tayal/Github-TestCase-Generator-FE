@@ -29,43 +29,51 @@ const RepositoryCard = ({ repo, onSelect }) => (
   <motion.div
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
-    className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:shadow-lg dark:hover:shadow-gray-900/50 transition-all duration-200"
+    className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:shadow-lg dark:hover:shadow-gray-900/50 transition-all duration-200"
     onClick={() => onSelect(repo)}
   >
-    <div className="flex flex-col space-y-4">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-            <FolderGit2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+    <div className="flex flex-col space-y-3">
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start space-x-2 flex-1 min-w-0">
+          <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex-shrink-0">
+            <FolderGit2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate">{repo.name}</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white truncate leading-tight">
+              {repo.name}
+            </h3>
             {repo.private && (
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 mt-1">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 mt-1">
                 Private
               </span>
             )}
           </div>
         </div>
-        <ChevronRight className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+        <ChevronRight className="w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5" />
       </div>
       
-      <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 min-h-[2.5rem]">
-        {repo.description || 'No description available'}
-      </p>
+      {repo.description && (
+        <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
+          {repo.description}
+        </p>
+      )}
       
-      <div className="flex items-center justify-between text-xs">
-        {repo.language && (
-          <div className="flex items-center space-x-2">
+      <div className="flex items-center justify-between gap-2 pt-1">
+        {repo.language ? (
+          <div className="flex items-center space-x-1.5 min-w-0">
             <div 
-              className="w-3 h-3 rounded-full" 
+              className="w-2.5 h-2.5 rounded-full flex-shrink-0" 
               style={{ backgroundColor: getLanguageColor(repo.language) }}
             />
-            <span className="text-gray-700 dark:text-gray-300 font-medium">{repo.language}</span>
+            <span className="text-xs text-gray-700 dark:text-gray-300 font-medium truncate">
+              {repo.language}
+            </span>
           </div>
+        ) : (
+          <div></div>
         )}
-        <span className="text-gray-500 dark:text-gray-400">
-          Updated {getRelativeTime(repo.updated_at)}
+        <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
+          {getRelativeTime(repo.updated_at)}
         </span>
       </div>
     </div>
@@ -302,7 +310,7 @@ const RepositoryBrowser = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Repositories List */}
         <div className="xl:col-span-1">
           <div className="card p-6">
@@ -316,7 +324,7 @@ const RepositoryBrowser = () => {
                 ))}
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
                 {repos?.repositories?.map((repo) => (
                   <RepositoryCard
                     key={repo.id}
@@ -330,7 +338,7 @@ const RepositoryBrowser = () => {
         </div>
 
         {/* Files Browser */}
-        <div className="xl:col-span-4">
+        <div className="xl:col-span-2">
           <div className="card p-6">
             {!selectedRepo ? (
               <div className="text-center py-12 text-gray-500 dark:text-gray-400">

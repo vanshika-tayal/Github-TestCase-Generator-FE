@@ -24,11 +24,11 @@ import { cn } from '../utils/helpers';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: Home, color: 'blue' },
+  { name: 'Settings', href: '/settings', icon: Settings, color: 'gray' },
   { name: 'Repositories', href: '/repositories', icon: FolderGit2, color: 'purple' },
+  { name: 'Dashboard', href: '/', icon: Home, color: 'blue' },
   { name: 'Test Generator', href: '/generator', icon: TestTube, color: 'green' },
   { name: 'Test Cases', href: '/test-cases', icon: FileText, color: 'amber' },
-  { name: 'Settings', href: '/settings', icon: Settings, color: 'gray' },
 ];
 
 const Layout = ({ children }) => {
