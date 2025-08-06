@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import RepositoryBrowser from './pages/RepositoryBrowser';
@@ -11,7 +12,8 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <Layout>
+    <ThemeProvider>
+      <Layout>
       <AnimatePresence mode="wait">
         <Routes>
           <Route 
@@ -95,6 +97,7 @@ function App() {
         </Routes>
       </AnimatePresence>
     </Layout>
+    </ThemeProvider>
   );
 }
 
