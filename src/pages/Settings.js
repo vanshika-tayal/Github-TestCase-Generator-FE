@@ -66,10 +66,10 @@ const Settings = () => {
       className="w-full space-y-8"
     >
       {/* Header Section */}
-      <motion.div variants={itemVariants} className="relative">
+      <motion.div variants={itemVariants} className="relative mb-8">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10 rounded-3xl" />
-        <div className="relative">
-          <div className="flex items-center space-x-3 mb-4">
+        <div className="relative p-8 lg:p-10">
+          <div className="flex items-center space-x-3 mb-6">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800">
               <SettingsIcon className="w-4 h-4 text-blue-600 dark:text-blue-400 mr-2" />
               <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
@@ -78,13 +78,13 @@ const Settings = () => {
             </div>
           </div>
           
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-200 dark:to-white bg-clip-text text-transparent">
               Settings
             </span>
           </h1>
           
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
             Configure your TestGen application, manage API integrations, and customize your experience.
           </p>
         </div>

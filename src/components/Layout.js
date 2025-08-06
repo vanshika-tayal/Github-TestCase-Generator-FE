@@ -146,15 +146,6 @@ const Layout = ({ children }) => {
                       whileHover={{ x: !sidebarCollapsed ? 2 : 0 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeIndicator"
-                          className="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-r-full"
-                          initial={false}
-                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
-                      )}
-                      
                       <item.icon className={cn(
                         "flex-shrink-0 transition-all duration-200",
                         sidebarCollapsed ? "w-6 h-6 mx-auto" : "w-5 h-5 mr-3 ml-1",
