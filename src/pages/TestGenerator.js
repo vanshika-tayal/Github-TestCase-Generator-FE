@@ -234,8 +234,8 @@ const TestGenerator = () => {
               <div className={cn(
                 "flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 font-semibold text-sm sm:text-base",
                 step >= stepNumber 
-                  ? "bg-primary-600 border-primary-600 text-white" 
-                  : "bg-white border-gray-300 text-gray-500"
+                  ? "bg-blue-600 border-blue-600 text-white" 
+                  : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400"
               )}>
                 {stepNumber}
               </div>
@@ -256,34 +256,34 @@ const TestGenerator = () => {
         <div className="lg:w-1/3 lg:sticky lg:top-0">
           <div className="text-center lg:text-left mb-4 lg:mb-0">
             <div className="flex items-center justify-center lg:justify-start space-x-2 sm:space-x-4 mb-2 sm:mb-3">
-              <div className="flex items-center space-x-2 bg-primary-50 border border-primary-200 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-primary-600" />
-                <span className="text-xs sm:text-sm font-medium text-primary-700">AI-Powered</span>
+              <div className="flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-xs sm:text-sm font-medium text-blue-700 dark:text-blue-300">AI-Powered</span>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">Test Generator</h1>
-            <p className="text-gray-600 mt-2 max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base lg:text-lg">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">Test Generator</h1>
+            <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base lg:text-lg">
               Generate AI-powered test cases for your code files
             </p>
           </div>
 
           {/* Desktop Progress Steps - Vertical Layout */}
           <div className="hidden lg:block">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Progress</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Progress</h3>
             <div className="space-y-4">
               {[1, 2, 3].map((stepNumber) => (
                 <div key={stepNumber} className="flex items-center space-x-3">
                   <div className={cn(
                     "flex items-center justify-center w-8 h-8 rounded-full border-2 font-semibold text-sm",
                     step >= stepNumber 
-                      ? "bg-primary-600 border-primary-600 text-white" 
-                      : "bg-white border-gray-300 text-gray-500"
+                      ? "bg-blue-600 border-blue-600 text-white" 
+                      : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400"
                   )}>
                     {stepNumber}
                   </div>
                   <span className={cn(
                     "text-sm font-medium",
-                    step >= stepNumber ? "text-primary-600" : "text-gray-500"
+                    step >= stepNumber ? "text-blue-600 dark:text-blue-400" : "text-gray-500 dark:text-gray-400"
                   )}>
                     {stepNumber === 1 && "Select Files & Framework"}
                     {stepNumber === 2 && "Generate Summaries"}
@@ -309,20 +309,20 @@ const TestGenerator = () => {
             className="space-y-6"
           >
             <div className="card p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Step 1: Select Files & Framework</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Step 1: Select Files & Framework</h2>
               
               {/* Selected Files */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-3">Selected Files</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">Selected Files</h3>
                 {selectedFiles.length > 0 ? (
                   <div className="space-y-2">
                     {selectedFiles.map((file, index) => (
                       <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div className="flex items-center space-x-3">
-                          <FileText className="w-5 h-5 text-primary-600" />
+                          <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                           <div>
-                            <p className="font-medium text-gray-900">{file.name}</p>
-                            <p className="text-sm text-gray-500">{file.path}</p>
+                            <p className="font-medium text-gray-900 dark:text-white">{file.name}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{file.path}</p>
                           </div>
                         </div>
                         <span className="badge-secondary">
@@ -332,8 +332,8 @@ const TestGenerator = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    <FileText className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                  <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                    <FileText className="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600" />
                     <p>No files selected</p>
                     <button 
                       onClick={() => navigate('/repositories')}
@@ -347,7 +347,7 @@ const TestGenerator = () => {
 
               {/* Framework Selection */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-3">Testing Framework</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-3">Testing Framework</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {frameworks?.frameworks?.map((framework) => (
                     <button
@@ -362,9 +362,9 @@ const TestGenerator = () => {
                     >
                       <div className="flex items-center space-x-2 mb-2">
                         <span className="text-lg">{getFrameworkIcon(framework.id)}</span>
-                        <span className="font-medium text-gray-900">{framework.name}</span>
+                        <span className="font-medium text-gray-900 dark:text-white">{framework.name}</span>
                       </div>
-                      <p className="text-sm text-gray-600">{framework.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{framework.description}</p>
                     </button>
                   ))}
                 </div>
@@ -402,7 +402,7 @@ const TestGenerator = () => {
           >
             <div className="card p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Step 2: Select Test Case</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Step 2: Select Test Case</h2>
                 <button
                   onClick={() => setStep(1)}
                   className="btn-ghost"
@@ -426,7 +426,7 @@ const TestGenerator = () => {
                     onClick={() => setSelectedSummary(summary)}
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-semibold text-gray-900">{summary.title}</h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">{summary.title}</h3>
                       <span className={cn(
                         "badge",
                         summary.type === 'unit' && "badge-success",
@@ -437,19 +437,19 @@ const TestGenerator = () => {
                         {summary.type}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{summary.description}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{summary.description}</p>
                     <div className="space-y-2">
                       <div>
-                        <p className="text-xs font-medium text-gray-500 mb-1">Scenarios:</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Scenarios:</p>
+                        <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
                           {summary.scenarios.slice(0, 2).map((scenario, i) => (
                             <li key={i}>• {scenario}</li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <p className="text-xs font-medium text-gray-500 mb-1">Expected Outcomes:</p>
-                        <ul className="text-xs text-gray-600 space-y-1">
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Expected Outcomes:</p>
+                        <ul className="text-xs text-gray-600 dark:text-gray-400 space-y-1">
                           {summary.expectedOutcomes.slice(0, 2).map((outcome, i) => (
                             <li key={i}>• {outcome}</li>
                           ))}
@@ -492,7 +492,7 @@ const TestGenerator = () => {
           >
             <div className="card p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Step 3: Generated Test Case</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Step 3: Generated Test Case</h2>
                 <button
                   onClick={() => setStep(2)}
                   className="btn-ghost"
@@ -508,18 +508,18 @@ const TestGenerator = () => {
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
-                        <p className="text-sm font-medium text-gray-500">File Name</p>
-                        <p className="text-gray-900">{generatedTestCase.fileName}</p>
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">File Name</p>
+                        <p className="text-gray-900 dark:text-white">{generatedTestCase.fileName}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">Framework</p>
-                        <p className="text-gray-900 flex items-center">
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Framework</p>
+                        <p className="text-gray-900 dark:text-white flex items-center">
                           <span className="mr-2">{getFrameworkIcon(generatedTestCase.framework)}</span>
                           {generatedTestCase.framework}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">Type</p>
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Type</p>
                         <span className={cn(
                           "badge",
                           generatedTestCase.type === 'unit' && "badge-success",
@@ -535,7 +535,7 @@ const TestGenerator = () => {
 
                   {/* Code Toggle */}
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-gray-900">Generated Code</h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">Generated Code</h3>
                     <button
                       onClick={() => setShowCode(!showCode)}
                       className="btn-ghost"
@@ -624,7 +624,7 @@ const TestGenerator = () => {
           >
             <div className="card p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Step 4: Create Pull Request</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Step 4: Create Pull Request</h2>
                 <button
                   onClick={() => setStep(3)}
                   className="btn-ghost"
@@ -636,7 +636,7 @@ const TestGenerator = () => {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     PR Title
                   </label>
                   <input
@@ -649,7 +649,7 @@ const TestGenerator = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     PR Description
                   </label>
                   <textarea
@@ -662,7 +662,7 @@ const TestGenerator = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Target Branch
                   </label>
                   <input
