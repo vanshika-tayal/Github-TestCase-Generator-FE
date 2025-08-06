@@ -1,0 +1,96 @@
+import axios from 'axios';
+
+// Create axios instance with base configuration
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || '/api',
+  timeout: 30000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Request interceptor
+api.interceptors.request.use(
+  (config) => {
+    // Add any auth tokens here if needed
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Response interceptor
+api.interceptors.response.use(
+  (response) => {
+    return response.data;
+  },
+  (error) => {
+    const message = error.response?.data?.message || error.message || 'An error occurred';
+    return Promise.reject(new Error(message));
+  }
+);
+
+// Health check
+export const healthCheck = () => api.get('/health');
+
+// GitHub API
+export const githubAPI = {
+  // Get user repositories
+  getRepositories: () => api.get('/github/repositories'),
+  
+  // Get repository files
+  getFiles: (owner, repo, path = '') => 
+    api.get(`/github/files/${owner}/${repo}`, { params: { path } }),
+  
+  // Get file content
+  getFileContent: (owner, repo, path) => 
+    api.get(`/github/file/${owner}/${repo}`, { params: { path } }),
+  
+  // Create pull request
+  createPullRequest: (data) => api.post('/github/create-pr', data),
+};
+
+// AI API
+export const aiAPI = {
+  // Get supported frameworks
+  getFrameworks: () => api.get('/ai/frameworks'),
+  
+  // Generate test case summaries
+  generateSummaries: (data) => api.post('/ai/generate-summaries', data),
+  
+  // Generate detailed test case
+  generateTestCase: (data) => api.post('/ai/generate-test-case', data),
+};
+
+// Test Cases API
+export const testCasesAPI = {
+  // Save test case summaries
+  saveSummaries: (data) => api.post('/test-cases/summaries', data),
+  
+  // Get all summaries
+  getSummaries: () => api.get('/test-cases/summaries'),
+  
+  // Get specific summary
+  getSummary: (id) => api.get(`/test-cases/summaries/${id}`),
+  
+  // Save generated test case
+  saveTestCase: (data) => api.post('/test-cases/save', data),
+  
+  // Get all test cases
+  getTestCases: () => api.get('/test-cases'),
+  
+  // Get specific test case
+  getTestCase: (id) => api.get(`/test-cases/${id}`),
+  
+  // Delete test case
+  deleteTestCase: (id) => api.delete(`/test-cases/${id}`),
+  
+  // Delete test case summary
+  deleteSummary: (id) => api.delete(`/test-cases/summaries/${id}`),
+  
+  // Get statistics
+  getStats: () => api.get('/test-cases/stats/overview'),
+};
+
+export default api; 
