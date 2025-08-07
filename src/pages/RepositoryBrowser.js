@@ -288,16 +288,10 @@ const RepositoryBrowser = () => {
 
   return (
     <div className="space-y-6 w-full">
-      {/* Header with AI-Powered Badge */}
+      {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="text-center lg:text-left">
-          <div className="flex items-center justify-center lg:justify-start space-x-4 mb-4">
-            <div className="flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg px-3 py-2">
-              <Zap className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span className="text-sm font-medium text-blue-700 dark:text-blue-300">AI-Powered</span>
-            </div>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">Repository Browser</h1>
+          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Repository Browser</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-2xl mx-auto lg:mx-0 lg:text-lg">
             Browse your GitHub repositories and select files for test generation
           </p>
@@ -313,10 +307,10 @@ const RepositoryBrowser = () => {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Repositories List */}
         <div className="xl:col-span-1">
-          <div className="card p-6">
-            <h2 className="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white mb-4">Repositories</h2>
+          <div className="card p-6 h-[600px] flex flex-col">
+            <h2 className="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white mb-4 flex-shrink-0">Repositories</h2>
             {reposLoading ? (
-              <div className="space-y-4">
+              <div className="space-y-4 flex-1">
                 {[...Array(3)].map((_, i) => (
                   <div key={i} className="animate-pulse">
                     <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
@@ -324,7 +318,7 @@ const RepositoryBrowser = () => {
                 ))}
               </div>
             ) : (
-              <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
+              <div className="space-y-4 overflow-y-auto pr-2 flex-1">
                 {repos?.repositories?.map((repo) => (
                   <RepositoryCard
                     key={repo.id}
@@ -339,17 +333,19 @@ const RepositoryBrowser = () => {
 
         {/* Files Browser */}
         <div className="xl:col-span-2">
-          <div className="card p-6">
+          <div className="card p-6 h-[600px] flex flex-col">
             {!selectedRepo ? (
-              <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-                <FolderGit2 className="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Select a Repository</h3>
-                <p>Choose a repository from the list to browse its files</p>
+              <div className="flex items-center justify-center h-full text-center py-12 text-gray-500 dark:text-gray-400">
+                <div>
+                  <FolderGit2 className="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600" />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Select a Repository</h3>
+                  <p>Choose a repository from the list to browse its files</p>
+                </div>
               </div>
             ) : (
               <>
                 {/* Repository Header */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-6 flex-shrink-0">
                   <div>
                     <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                       {selectedRepo.name}
@@ -369,7 +365,7 @@ const RepositoryBrowser = () => {
 
                 {/* Breadcrumbs */}
                 {currentPath && (
-                  <div className="flex items-center space-x-2 mb-4 text-sm">
+                  <div className="flex items-center space-x-2 mb-4 text-sm flex-shrink-0">
                     <button
                       onClick={() => setCurrentPath('')}
                       className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
@@ -391,7 +387,7 @@ const RepositoryBrowser = () => {
                 )}
 
                 {/* Search and Filters */}
-                <div className="flex items-center space-x-4 mb-4">
+                <div className="flex items-center space-x-4 mb-4 flex-shrink-0">
                   <div className="flex-1 relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" />
                     <input
@@ -412,7 +408,7 @@ const RepositoryBrowser = () => {
                 </div>
 
                 {/* Files List */}
-                <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden flex-1 overflow-y-auto">
                   {filesLoading ? (
                     <div className="p-8 text-center">
                       <RefreshCw className="w-6 h-6 animate-spin text-blue-600 dark:text-blue-400 mx-auto mb-2" />

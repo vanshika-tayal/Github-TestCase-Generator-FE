@@ -1,7 +1,7 @@
 {
-  "name": "test-case-generator-frontend",
+  "name": "gitforge-ai-frontend",
   "version": "1.0.0",
-  "description": "Frontend for Test Case Generator with GitHub Integration",
+  "description": "GitForge.AI - Forge intelligent test cases from GitHub repositories using AI",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^2.2.7",

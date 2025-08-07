@@ -37,6 +37,27 @@ api.interceptors.response.use(
   },
   (error) => {
     const message = error.response?.data?.message || error.message || 'An error occurred';
+    
+    // If token is not configured, add a helpful message and redirect to settings
+    if (error.response?.status === 401) {
+      if (message.includes('GitHub') || message.includes('Gemini')) {
+        // Show toast message to guide user
+        import('react-hot-toast').then(({ default: toast }) => {
+          toast.error(message + '\nRedirecting to Settings...', {
+            duration: 3000,
+            icon: '🔐'
+          });
+        });
+        
+        // Redirect to settings page after a short delay
+        setTimeout(() => {
+          if (window.location.pathname !== '/settings') {
+            window.location.href = '/settings';
+          }
+        }, 2000);
+      }
+    }
+    
     return Promise.reject(new Error(message));
   }
 );

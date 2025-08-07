@@ -276,15 +276,9 @@ const TestGenerator = () => {
         {/* Header Section - Left Side on Desktop */}
         <div className="lg:w-1/3 lg:sticky lg:top-0">
           <div className="text-center lg:text-left mb-4 lg:mb-0">
-            <div className="flex items-center justify-center lg:justify-start space-x-2 sm:space-x-4 mb-2 sm:mb-3">
-              <div className="flex items-center space-x-2 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg px-2 py-1 sm:px-3 sm:py-2">
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs sm:text-sm font-medium text-blue-700 dark:text-blue-300">AI-Powered</span>
-              </div>
-            </div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">Test Generator</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3">Test Generator</h1>
             <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base lg:text-lg">
-              Generate AI-powered test cases for your code files
+              Generate test cases for your code files
             </p>
           </div>
 
