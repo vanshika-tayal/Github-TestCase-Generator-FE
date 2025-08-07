@@ -362,6 +362,15 @@ const Layout = ({ children }) => {
                   
                   <div className="flex items-center space-x-4">
                     <a 
+                      href="https://forms.gle/YUYpvkJMh2Lkfwo29" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors underline underline-offset-2"
+                    >
+                      Contact Us
+                    </a>
+                    <span className="text-gray-400 dark:text-gray-600">•</span>
+                    <a 
                       href="https://github.com" 
                       target="_blank" 
                       rel="noopener noreferrer"
