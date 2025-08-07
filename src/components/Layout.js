@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Transition } from '@headlessui/react';
 import { 
-  Home, 
   FolderGit2, 
   TestTube, 
-  FileText, 
-  Settings,
   Key, 
   Menu, 
   X,
@@ -17,11 +13,7 @@ import {
   ChevronLeft,
   Moon,
   Sun,
-  Monitor,
-  Palette,
-  Zap,
-  Clock,
-  Calendar
+  Zap
 } from 'lucide-react';
 import { cn } from '../utils/helpers';
 import { useTheme } from '../contexts/ThemeContext';
@@ -35,17 +27,8 @@ const navigation = [
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
   const location = useLocation();
   const { isDarkMode, toggleTheme } = useTheme();
-
-  // Update time every second
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const getIconColor = (color, isActive) => {
     if (!isActive) return 'text-gray-400 dark:text-gray-500';
@@ -337,29 +320,31 @@ const Layout = ({ children }) => {
           </header>
 
           {/* Main Content with proper transitions */}
-          <main className="flex-1 overflow-y-auto bg-gray-50/50 dark:bg-gray-900/50 flex flex-col pt-14 lg:pt-14 pb-20">
+          <main className="flex-1 bg-gray-50/50 dark:bg-gray-900/50 flex flex-col pt-16 pb-16 lg:pt-14">
             <motion.div 
-              className="flex-1 w-full"
+              className="flex-1 w-full flex flex-col min-h-0"
               animate={{ 
                 paddingLeft: 0,
                 transition: { duration: 0.3, ease: "easeInOut" }
               }}
             >
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 h-full flex flex-col">
                 <motion.div
                   key={location.pathname}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full max-w-full"
+                  className="w-full max-w-full flex-1 min-h-0"
                 >
                   {children}
                 </motion.div>
               </div>
             </motion.div>
             
-            {/* Footer */}
-            <footer className="bg-gradient-to-r from-white/95 via-white/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/95 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/50 py-3 px-6 fixed bottom-0 left-0 right-0 z-40 shadow-lg" style={{ paddingLeft: sidebarCollapsed ? '5rem' : '16rem' }}>
+          </main>
+          
+          {/* Footer */}
+          <footer className="bg-gradient-to-r from-white/95 via-white/90 to-white/95 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/95 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-700/50 py-3 px-6 fixed bottom-0 left-0 right-0 z-40 shadow-lg h-16" style={{ paddingLeft: sidebarCollapsed ? '5rem' : '16rem' }}>
               <div className="container mx-auto px-4">
                 <div className="flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
                   <div className="flex items-center space-x-3">
@@ -402,8 +387,7 @@ const Layout = ({ children }) => {
                   </div>
                 </div>
               </div>
-            </footer>
-          </main>
+          </footer>
         </div>
       </div>
     </div>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)" />
+  
+  <!-- Test Tube Icon -->
+  <g transform="translate(256, 256)">
+    <!-- Test Tube Body -->
+    <rect x="-40" y="-120" width="80" height="200" rx="20" fill="white" opacity="0.9"/>
+    <rect x="-30" y="-110" width="60" height="180" rx="15" fill="url(#liquid)"/>
+    
+    <!-- Code Brackets -->
+    <text x="-100" y="10" font-family="monospace" font-size="80" fill="white" font-weight="bold">{</text>
+    <text x="60" y="10" font-family="monospace" font-size="80" fill="white" font-weight="bold">}</text>
+    
+    <!-- AI Sparkles -->
+    <circle cx="-60" cy="-80" r="8" fill="white" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="60" cy="-60" r="6" fill="white" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="80" r="7" fill="white" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="-50" cy="60" r="5" fill="white" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="liquid" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:0.7" />
+    </linearGradient>
+  </defs>
+</svg>

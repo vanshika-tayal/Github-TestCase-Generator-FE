@@ -41,20 +41,25 @@ api.interceptors.response.use(
     // If token is not configured, add a helpful message and redirect to settings
     if (error.response?.status === 401) {
       if (message.includes('GitHub') || message.includes('Gemini')) {
-        // Show toast message to guide user
-        import('react-hot-toast').then(({ default: toast }) => {
-          toast.error(message + '\nRedirecting to Settings...', {
-            duration: 3000,
-            icon: '🔐'
+        // Only show toast if not already handled by component
+        if (!error.config.__isRetryRequest && !window.__toastShown) {
+          window.__toastShown = true;
+          // Show toast message to guide user
+          import('react-hot-toast').then(({ default: toast }) => {
+            toast.error(message + '\nRedirecting to API Keys Setup...', {
+              duration: 3000,
+              icon: '🔐'
+            });
           });
-        });
-        
-        // Redirect to settings page after a short delay
-        setTimeout(() => {
-          if (window.location.pathname !== '/settings') {
-            window.location.href = '/settings';
-          }
-        }, 2000);
+          
+          // Redirect to settings page after a short delay
+          setTimeout(() => {
+            window.__toastShown = false;
+            if (window.location.pathname !== '/settings') {
+              window.location.href = '/settings';
+            }
+          }, 2000);
+        }
       }
     }
     

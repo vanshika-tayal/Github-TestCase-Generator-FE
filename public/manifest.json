@@ -1,0 +1,22 @@
+{
+  "short_name": "GitForge.AI",
+  "name": "GitForge.AI - AI-Powered Test Generation",
+  "description": "Forge intelligent test cases from your GitHub repositories using AI",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff"
+}

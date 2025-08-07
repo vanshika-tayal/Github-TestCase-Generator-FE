@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background -->
+  <rect width="32" height="32" rx="8" fill="url(#bg-gradient)"/>
+  
+  <!-- Test Tube -->
+  <path d="M16 7 L16 20 Q16 22 14 22 L18 22 Q16 22 16 20 L16 7" 
+        stroke="white" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        fill="none"/>
+  
+  <!-- Liquid in tube -->
+  <rect x="14" y="12" width="4" height="8" rx="1" fill="#10b981" opacity="0.8"/>
+  
+  <!-- Code brackets -->
+  <text x="6" y="18" font-family="monospace" font-size="8" fill="white" font-weight="bold">{</text>
+  <text x="22" y="18" font-family="monospace" font-size="8" fill="white" font-weight="bold">}</text>
+  
+  <!-- AI Sparkle -->
+  <circle cx="10" cy="10" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="22" cy="10" r="1" fill="white" opacity="0.7"/>
+  <circle cx="22" cy="24" r="1.5" fill="white" opacity="0.8"/>
+  
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+</svg>

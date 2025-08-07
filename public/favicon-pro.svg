@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Background -->
+  <rect width="256" height="256" rx="60" fill="url(#gradient)"/>
+  
+  <!-- Test Tube Group -->
+  <g transform="translate(128, 128)">
+    <!-- Main Test Tube -->
+    <rect x="-24" y="-60" width="48" height="90" rx="24" fill="white" opacity="0.95"/>
+    <rect x="-16" y="-20" width="32" height="40" rx="16" fill="url(#liquid)" opacity="0.9"/>
+    
+    <!-- Code Symbol < /> -->
+    <text x="-75" y="8" font-family="Arial, sans-serif" font-size="42" fill="white" font-weight="bold" opacity="0.9">&lt;</text>
+    <text x="45" y="8" font-family="Arial, sans-serif" font-size="42" fill="white" font-weight="bold" opacity="0.9">/&gt;</text>
+    
+    <!-- Sparkles for AI -->
+    <circle cx="0" cy="-80" r="6" fill="white">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="-40" cy="-40" r="4" fill="white">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="40" cy="-40" r="4" fill="white">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+</svg>
